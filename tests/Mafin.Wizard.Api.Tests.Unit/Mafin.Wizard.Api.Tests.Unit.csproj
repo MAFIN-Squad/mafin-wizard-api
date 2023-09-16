@@ -12,6 +12,6 @@
     <PackageReference Include="xunit.core" />
     <PackageReference Include="xunit.runner.visualstudio" />
 
-    <ProjectReference Include="..\..\src\Mafin.Template\Mafin.Template.csproj" />
+    <ProjectReference Include="..\..\src\Mafin.Wizard.Api\Mafin.Wizard.Api.csproj" />
   </ItemGroup>
 </Project>
