@@ -1,0 +1,15 @@
+{{-
+  func formatUsings
+    for item in $0 
+      'using ' + item + ';\n' 
+    end
+  end
+
+  func formatNamespace
+    tafName + '.' + ($0 | array.join '.')
+  end
+
+  func addPackages
+    packages = packages | array.add_range $0
+  end
+-}}

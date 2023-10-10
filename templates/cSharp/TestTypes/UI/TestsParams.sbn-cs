@@ -1,0 +1,13 @@
+{{- 
+  include 'commonFunctions'
+
+  TestsParams = {
+    name: 'Tests',
+    path: ['Tests', 'UI'],
+    usings: [ 
+      tafName + '.UI.Core', 
+      'OpenQA.Selenium'],
+  }
+  
+  include 'Tests'
+-}}

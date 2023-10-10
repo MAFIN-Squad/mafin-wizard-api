@@ -1,0 +1,9 @@
+{{-
+  func formatPath
+    '#### path: ' + ($0 | array.join ':') + ' ####'
+  end
+
+  func formatName
+    '#### name: ' + $0 + ' ####'
+  end
+-}}

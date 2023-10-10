@@ -1,0 +1,28 @@
+{{~ 
+    include 'commonFunctions'
+    include 'csharp.commonFunctions'
+    import GlobalSetupParams
+    GlobalSetupParams.name | formatName
+    GlobalSetupParams.path | formatPath
+    GlobalSetupParams.usings | formatUsings 
+~}}
+using NUnit.Framework;
+
+namespace {{ path | formatNamespace }};
+
+[Parallelizable(ParallelScope.Fixtures)]
+[SetUpFixture]
+public class GlobalSetup
+{
+    [OneTimeSetUp]
+    public void OneTimeBaseSetup()
+    {
+        // something might be here
+    }
+
+    [OneTimeTearDown]
+    public void AfterAll()
+    {
+        // something might be here
+    }
+}

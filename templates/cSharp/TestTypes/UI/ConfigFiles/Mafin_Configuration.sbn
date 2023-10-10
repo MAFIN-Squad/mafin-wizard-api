@@ -1,0 +1,15 @@
+{{-
+  configSections = configSections | array.add '
+    "selenium": {
+      "browser": "chrome",
+      "runType": "Local",
+      "timeouts": {
+        "implicitWait": "00:00:00",
+        "explicitWait": "00:01:30",
+        "explicitWaitPooling": "00:00:00.5",
+        "pageLoad": "00:01:00",
+        "asynchronousJavaScript": "00:00:30",
+        "commandTimeout": "00:00:30"
+      }
+    }'
+-}}

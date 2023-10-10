@@ -1,0 +1,32 @@
+{{~
+    include 'commonFunctions'
+    include 'csharp.commonFunctions'
+    import TestsParams
+    TestsParams.name | formatName
+    TestsParams.path | formatPath
+    usings | formatUsings 
+~}}
+using NUnit.Framework;
+
+namespace {{ path | formatNamespace }};
+
+public class NunitTests : AbstractTest
+{
+    {{~ for item in sharedVariables ~}}
+    {{ item }}
+    {{~ end ~}}
+
+    [SetUp]
+    public void Setup()
+    {
+        {{ testSetup }}
+    }
+
+{{~ for test in tests ~}}
+    [Test]
+    public void {{test.name}}()
+    {
+        {{ test.body }}
+    }
+{{~ end ~}}
+}

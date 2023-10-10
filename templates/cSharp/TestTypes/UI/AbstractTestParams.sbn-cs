@@ -1,0 +1,21 @@
+{{- 
+  include 'commonFunctions'
+
+  AbstractTestParams = {
+    name: 'AbstratctTest',
+    path: ['Tests', 'UI'],
+    usings: [ 
+      'Mafin.Web.UI.Selenium.Configuration', 
+      'Mafin.Web.UI.Selenium.Driver.Strategy',
+      tafName + '.UI.Core', 
+      'OpenQA.Selenium'],
+    sharedVariables: ['protected IWebDriver driver;', 'protected WdmExtended wdm;'],
+    setup: 'var webConfiguration = WebConfigurationProvider.GetWebConfiguration();
+var strategy = DriverMapping.GetDriverStrategy(webConfiguration);
+driver = strategy.GetDriver();
+wdm = new WdmExtended(driver, webConfiguration.TimeoutsConfig);',
+    teardown: 'driver?.Quit();'
+  }
+
+  include 'AbstractTest'
+-}}

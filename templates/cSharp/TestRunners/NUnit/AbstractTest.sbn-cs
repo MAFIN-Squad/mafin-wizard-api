@@ -1,0 +1,35 @@
+{{~ 
+    include 'commonFunctions'
+    include 'csharp.commonFunctions'
+    import AbstractTestParams
+    AbstractTestParams.name | formatName
+    path | formatPath
+    usings | formatUsings
+~}}
+using NUnit.Framework;
+
+namespace {{ path | formatNamespace }};
+
+[TestFixture]
+public abstract class AbstractTest
+{
+    {{~ for item in sharedVariables ~}}
+    {{ item }}
+    {{~ end ~}}
+
+    {{~ if setup ~}}
+    [SetUp]
+    public void SetUp()
+    {
+        {{ setup }}
+    }
+    {{~ end ~}}
+
+    {{~ if teardown ~}}
+    [TearDown]
+    public void TearDown()
+    {
+        {{ teardown }}
+    }
+    {{~ end ~}}
+}

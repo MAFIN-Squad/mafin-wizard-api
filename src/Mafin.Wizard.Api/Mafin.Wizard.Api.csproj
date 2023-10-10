@@ -13,7 +13,10 @@
   <ItemGroup>
     <InternalsVisibleTo Include="$(MSBuildProjectName).Tests.Unit" />
 
+    <PackageReference Include="Scriban" />
+
     <None Include="..\..\LICENSE" Pack="True" PackagePath="\" Visible="False" />
     <None Include="..\..\README.md" Pack="True" PackagePath="\" Visible="False" />
+    <EmbeddedResource Include="..\..\templates\**\*.*" />
   </ItemGroup>
 </Project>

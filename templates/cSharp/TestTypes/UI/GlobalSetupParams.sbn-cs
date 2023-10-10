@@ -1,0 +1,10 @@
+{{- 
+  include 'commonFunctions'
+
+  GlobalSetupParams = {
+    name: 'GlobalSetup',
+    path: ['Tests', 'UI'],
+  }
+
+  include 'GlobalSetup'
+-}}

@@ -1,0 +1,15 @@
+{{~
+    include 'commonFunctions'
+    include 'cSharp.commonFunctions'
+    path = ['Configuration', 'Models']
+    path | formatPath
+~}}
+using Mafin.Configuration.Attributes;
+
+namespace {{ path | formatNamespace }};
+
+[ConfigurationSection("appsettings")]
+public class AppSettings
+{
+    public string Example { get; set; }
+}

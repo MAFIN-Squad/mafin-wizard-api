@@ -1,0 +1,31 @@
+{{~
+    include 'commonFunctions'
+    include 'cSharp.commonFunctions'
+    path = ['Configuration']
+    path | formatPath 
+~}}
+using System;
+using {{ path | formatNamespace }}.Models;
+using Mafin.Configuration;
+using Mafin.Configuration.Meta;
+using Mafin.Configuration.Providers.EnvironmentDependent;
+using Mafin.Configuration.Providers.SettingsFile;
+using Microsoft.Extensions.Configuration;
+
+namespace {{ path | formatNamespace }};
+
+public static class AppConfig
+{
+    private static Lazy<IConfigurationRoot> _config = new Lazy<IConfigurationRoot>(() => 
+        new ConfigurationBuilder()
+            .LoadSettingsFile()
+            .AddEnvironmentDependentConfiguration(EnvironmentConfigurationSplitPrinciple.ByFileName, ".")
+            .Build());
+
+    private static AppSettings _appSettings;
+    private static EnvSettings _envSettings;
+
+    public static AppSettings AppSettings => _config.Value.GetSection<AppSettings>();
+
+    public static EnvSettings EnvSettings => _config.Value.GetSection<EnvSettings>();
+}

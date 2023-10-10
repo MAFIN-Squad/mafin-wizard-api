@@ -1,0 +1,7 @@
+{{-
+  configSections = configSections | array.add '
+    "configuration": {
+      "directory": ".",
+      "fileExtensions": [ "json" ]
+    }'
+-}}
