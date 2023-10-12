@@ -1,4 +1,4 @@
-using Mafin.Wizard.Api.Meta;
+using Mafin.Wizard.Api.Models;
 using SharpCompress;
 
 namespace Mafin.Wizard.Api;

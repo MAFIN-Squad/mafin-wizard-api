@@ -1,5 +1,5 @@
 using System.Text.RegularExpressions;
-using Mafin.Wizard.Api.Meta;
+using Mafin.Wizard.Api.Models;
 
 namespace Mafin.Wizard.Api;
 

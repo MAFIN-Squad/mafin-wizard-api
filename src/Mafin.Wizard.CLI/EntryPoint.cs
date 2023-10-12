@@ -1,6 +1,6 @@
 using CommandLine;
 using Mafin.Wizard.Api;
-using Mafin.Wizard.Api.Meta;
+using Mafin.Wizard.Api.Models;
 
 namespace Mafin.Wizard.Cli;
 

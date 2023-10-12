@@ -1,4 +1,4 @@
-namespace Mafin.Wizard.Api.Meta;
+namespace Mafin.Wizard.Api.Models;
 
 public record WizardSettings
 {
