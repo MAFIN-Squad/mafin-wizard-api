@@ -25,7 +25,11 @@ public class ResourceTemplateProvider
 
     public bool IsFullTemplateName(string value)
     {
-        ArgumentNullException.ThrowIfNullOrEmpty(value);
+        if (value == null)
+        {
+            throw new ArgumentNullException(nameof(value), "Template name cannot be null");
+        }
+
         return value.StartsWith($"{BaseTemplatePath}.", StringComparison.OrdinalIgnoreCase)
             && Path.HasExtension(value);
     }
