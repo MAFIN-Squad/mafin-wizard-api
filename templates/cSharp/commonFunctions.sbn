@@ -6,7 +6,7 @@
   end
 
   func formatNamespace
-    tafName + '.' + ($0 | array.join '.')
+    appName + '.' + ($0 | array.join '.')
   end
 
   func addPackages

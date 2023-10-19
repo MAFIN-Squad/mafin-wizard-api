@@ -5,7 +5,7 @@
     name: 'Tests',
     path: ['Tests', 'UI'],
     usings: [ 
-      tafName + '.UI.Core', 
+      appName + '.UI.Core', 
       'OpenQA.Selenium'],
   }
   

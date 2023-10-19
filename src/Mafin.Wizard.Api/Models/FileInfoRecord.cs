@@ -3,22 +3,24 @@ namespace Mafin.Wizard.Api.Models;
 public record FileInfoRecord
 {
     public FileInfoRecord(
-        string fileName,
+        string name,
         string extension,
-        string filePath,
+        string directory,
         string data)
     {
-        FileName = fileName;
+        Name = name;
         Extension = extension;
-        FilePath = filePath;
+        Directory = directory;
         Data = data;
     }
 
+    public string Directory { get; private set; }
+
+    public string Name { get; private set; }
+
     public string Extension { get; private set; }
 
-    public string FileName { get; private set; }
-
-    public string FilePath { get; private set; }
-
     public string Data { get; private set; }
+
+    public string FullPath => Path.Combine(Directory, $"{Name}.{Extension}");
 }

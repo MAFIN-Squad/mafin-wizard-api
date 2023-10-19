@@ -1,8 +1,9 @@
 using System.Reflection;
+using Mafin.Wizard.Api.Models;
 
 namespace Mafin.Wizard.Api;
 
-public class TemplateReader
+internal class TemplateReader
 {
     private readonly Assembly _assembly;
     private readonly ResourceTemplateProvider _templateProvider;
@@ -13,13 +14,13 @@ public class TemplateReader
         _templateProvider = templateProvider;
     }
 
-    public Dictionary<string, string> ReadAll()
+    public List<ScribanTemplate> ReadAll()
     {
-        var result = new Dictionary<string, string>();
+        var result = new List<ScribanTemplate>();
 
         foreach (var file in _templateProvider.GetResourceNames())
         {
-            result.Add(file, ReadManifestResource(file));
+            result.Add(new(file, ReadManifestResource(file)));
         }
 
         return result;

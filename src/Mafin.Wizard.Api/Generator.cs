@@ -20,16 +20,15 @@ public class Generator
         _templateContext = CreateTemplateContext();
     }
 
-    public void Create()
+    public SolutionModel Create()
     {
-        var solution = new SolutionModel(_settings, RenderTemplates());
-        new SolutionCreator(solution).CreateSolution();
+        return new SolutionModel(_settings.AppName, RenderTemplates());
     }
 
     private TemplateContext CreateTemplateContext()
     {
         var templateContext = new TemplateContext();
-        var scriptObject = new ScriptObject { { "tafName", _settings.TafName } };
+        var scriptObject = new ScriptObject { { "appName", _settings.AppName } };
         _settings.Parameters?.ForEach(x => scriptObject.Add(x.Key, x.Value));
         templateContext.PushGlobal(scriptObject);
 
@@ -41,24 +40,10 @@ public class Generator
 
     private List<FileInfoRecord> RenderTemplates()
     {
-        var result = new List<FileInfoRecord>();
-
         var factory = new ResultFileFactory();
-        foreach (var value in _templateReader.ReadAll())
-        {
-            #pragma warning disable CA1031 // Do not catch general exception types
-            try
-            {
-                var fileContent = Template.Parse(value.Value).Render(_templateContext);
-                result.Add(factory.CreateResultFileRecord(value.Key, fileContent));
-            }
-            catch
-            {
-                // ignore
-            }
-            #pragma warning restore CA1031
-        }
-
-        return result;
+        return _templateReader.ReadAll()
+            .Where(template => template.IsFileTemplate())
+            .Select(template => factory.CreateResultFileRecord(template, _templateContext))
+            .ToList();
     }
 }

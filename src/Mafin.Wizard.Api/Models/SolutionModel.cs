@@ -2,13 +2,13 @@ namespace Mafin.Wizard.Api.Models;
 
 public record SolutionModel
 {
-    public SolutionModel(WizardSettings settings, IReadOnlyList<FileInfoRecord> files)
+    public SolutionModel(string name, IReadOnlyList<FileInfoRecord> files)
     {
-        Settings = settings;
+        Name = name;
         Files = files;
     }
 
-    public WizardSettings Settings { get; private set; }
+    public string Name { get; private set; }
 
     public IReadOnlyList<FileInfoRecord> Files { get; private set; }
 }

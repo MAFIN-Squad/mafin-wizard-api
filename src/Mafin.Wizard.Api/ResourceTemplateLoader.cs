@@ -4,7 +4,7 @@ using Scriban.Runtime;
 
 namespace Mafin.Wizard.Api;
 
-public class ResourceTemplateLoader : ITemplateLoader
+internal class ResourceTemplateLoader : ITemplateLoader
 {
     private readonly ResourceTemplateProvider _templateProvider;
     private readonly TemplateReader _templateReader;

@@ -17,5 +17,8 @@ public class WizardParameters
 
     [Option('t', "testTypes", Required = true)]
     public IEnumerable<string> TestTypes { get; set; }
+
+    [Option("withConfigModule")]
+    public bool WithConfigModule { get; set; }
 }
 #pragma warning restore CS8618

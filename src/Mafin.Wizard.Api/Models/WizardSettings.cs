@@ -2,21 +2,21 @@ namespace Mafin.Wizard.Api.Models;
 
 public record WizardSettings
 {
-    public WizardSettings(string tafName, string language, string[] features)
+    public WizardSettings(string appName, string language, string[] features)
     {
-        TafName = tafName;
+        AppName = appName;
         Language = language;
         Features = FormatFeatures(language, features);
         Parameters = new Dictionary<string, object>();
     }
 
-    public WizardSettings(string tafName, string language, string[] features, IReadOnlyDictionary<string, object> parameters)
-        : this(tafName, language, features)
+    public WizardSettings(string appName, string language, string[] features, IReadOnlyDictionary<string, object> parameters)
+        : this(appName, language, features)
     {
         Parameters = parameters;
     }
 
-    public string TafName { get; private set; }
+    public string AppName { get; private set; }
 
     public string Language { get; private set; }
 

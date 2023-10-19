@@ -8,22 +8,24 @@ internal static class EntryPoint
 {
     internal static void Main(string[] args)
     {
-        var parserResult = CommandLine.Parser.Default.ParseArguments<WizardParameters>(args);
-        parserResult.WithParsed<WizardParameters>(HandleCreateCommand);
+        var parserResult = Parser.Default.ParseArguments<WizardParameters>(args);
+        parserResult.WithParsed(HandleCreateCommand);
         parserResult.WithNotParsed(HandleParseError);
     }
 
     private static void HandleCreateCommand(WizardParameters parameters)
     {
-        var features = new List<string>
-        {
-            $"TestRunners.{parameters.TestRunner}",
-            $"Features.Configuration"
-        };
+        var features = new List<string> { $"TestRunners.{parameters.TestRunner}" };
         features.AddRange(parameters.TestTypes.Select(x => $"TestTypes.{x}"));
 
+        if (parameters.WithConfigModule)
+        {
+            features.Add("Features.Configuration");
+        }
+
         var wizardSettings = new WizardSettings(parameters.Name, parameters.Language, features.ToArray());
-        new Generator(wizardSettings).Create();
+        var solutionModel = new Generator(wizardSettings).Create();
+        new SolutionCreator().Create(solutionModel);
     }
 
     private static void HandleParseError(IEnumerable<Error> errs)

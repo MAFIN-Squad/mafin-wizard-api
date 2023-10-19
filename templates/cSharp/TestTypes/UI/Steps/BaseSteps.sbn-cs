@@ -5,7 +5,7 @@
     path | formatPath
 ~}}
 using System.Collections.Generic;
-using {{ tafName }}.UI.Core;
+using {{ appName }}.UI.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 

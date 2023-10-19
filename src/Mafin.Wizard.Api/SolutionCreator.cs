@@ -1,29 +1,29 @@
 using Mafin.Wizard.Api.Models;
 using SharpCompress;
 
-namespace Mafin.Wizard.Api;
+namespace Mafin.Wizard.Cli;
 
 public class SolutionCreator
 {
-    private readonly SolutionModel _model;
+    private SolutionModel _model;
+    private string _baseDirectory;
 
-    public SolutionCreator(SolutionModel model)
+    public void Create(SolutionModel model, string baseDirectory = "")
     {
         _model = model;
-    }
-
-    public void CreateSolution()
-    {
+        _baseDirectory = baseDirectory;
         CreateFileSystem();
         CreateFiles();
     }
 
+    private string BaseDirectory => Path.Combine(_model.Name, _baseDirectory);
+
     private void CreateFileSystem()
     {
-        Directory.CreateDirectory(_model.Settings.TafName);
+        Directory.CreateDirectory(_model.Name);
         foreach (var file in _model.Files)
         {
-            Directory.CreateDirectory(Path.Combine(_model.Settings.TafName, file.FilePath));
+            Directory.CreateDirectory(Path.Combine(BaseDirectory, file.Directory));
         }
     }
 
@@ -31,11 +31,8 @@ public class SolutionCreator
 
     private void CreateFile(FileInfoRecord file)
     {
-        var path = FormatPath(file);
+        var path = Path.Combine(BaseDirectory, file.FullPath);
         using StreamWriter sw = File.CreateText(path);
         sw.Write(file.Data);
     }
-
-    private string FormatPath(FileInfoRecord file) =>
-        Path.Combine(_model.Settings.TafName, file.FilePath, $"{file.FileName}.{file.Extension}");
 }

@@ -1,5 +1,6 @@
 {{-
   include 'commonFunctions'
+  include 'cSharp.commonFunctions'
   include 'Features.Configuration.ConfigFiles.configFiles'
   include 'Features.Configuration.packages'
   include 'TestRunners.NUnit.packages'
@@ -9,7 +10,7 @@
   include 'TestTypes.UI.packages'
 
   configFiles = configFiles | array.add 'Mafin.Configuration.json'
-  tafName | formatName
+  appName | formatName
 -}}
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>

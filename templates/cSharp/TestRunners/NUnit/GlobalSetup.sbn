@@ -2,9 +2,9 @@
     include 'commonFunctions'
     include 'csharp.commonFunctions'
     import GlobalSetupParams
-    GlobalSetupParams.name | formatName
-    GlobalSetupParams.path | formatPath
-    GlobalSetupParams.usings | formatUsings 
+    name | formatName
+    path | formatPath
+    usings | formatUsings 
 ~}}
 using NUnit.Framework;
 
@@ -12,7 +12,7 @@ namespace {{ path | formatNamespace }};
 
 [Parallelizable(ParallelScope.Fixtures)]
 [SetUpFixture]
-public class GlobalSetup
+public class {{ name }}
 {
     [OneTimeSetUp]
     public void OneTimeBaseSetup()

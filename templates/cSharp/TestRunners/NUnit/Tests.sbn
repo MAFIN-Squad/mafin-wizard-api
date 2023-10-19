@@ -2,15 +2,15 @@
     include 'commonFunctions'
     include 'csharp.commonFunctions'
     import TestsParams
-    TestsParams.name | formatName
-    TestsParams.path | formatPath
+    name | formatName
+    path | formatPath
     usings | formatUsings 
 ~}}
 using NUnit.Framework;
 
 namespace {{ path | formatNamespace }};
 
-public class NunitTests : AbstractTest
+public class {{ name }} : AbstractTest
 {
     {{~ for item in sharedVariables ~}}
     {{ item }}

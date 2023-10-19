@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Mafin.Wizard.Api;
 
-public class ResourceTemplateProvider
+internal class ResourceTemplateProvider
 {
     private readonly string[] _directories;
     private readonly string[] _directoryWithSubdirectories;

@@ -7,7 +7,7 @@
     usings: [ 
       'Mafin.Web.UI.Selenium.Configuration', 
       'Mafin.Web.UI.Selenium.Driver.Strategy',
-      tafName + '.UI.Core', 
+      appName + '.UI.Core', 
       'OpenQA.Selenium'],
     sharedVariables: ['protected IWebDriver driver;', 'protected WdmExtended wdm;'],
     setup: 'var webConfiguration = WebConfigurationProvider.GetWebConfiguration();

@@ -1,51 +1,28 @@
 using System.Text.RegularExpressions;
 using Mafin.Wizard.Api.Models;
+using Scriban;
 
 namespace Mafin.Wizard.Api;
 
-public class ResultFileFactory
+internal class ResultFileFactory
 {
     private const string PathPattern = "#### path: (.*?) ####";
     private const string FileNamePattern = "#### name: (.*?) ####";
 
-    private static readonly string[] ScribanFileExtensions = new[]
+    public FileInfoRecord CreateResultFileRecord(ScribanTemplate template, TemplateContext context)
     {
-        ".sbn-",
-        ".sbn",
-        ".scriban-",
-        ".scriban"
-    };
+        var renderedTemplate = RenderTemplate(template, context);
+        var filename = GetFileName(template.Name, ref renderedTemplate);
+        var directory = GetDirectory(ref renderedTemplate);
+        var extension = template.GetFileExtension();
 
-    public FileInfoRecord CreateResultFileRecord(string templateName, string data)
-    {
-        var filename = GetFileName(templateName, ref data);
-        var extension = GetExtension(templateName);
-        var path = GetFilePath(ref data);
-
-        return new FileInfoRecord(filename, extension, path, data);
+        return new FileInfoRecord(filename, extension, directory, renderedTemplate);
     }
 
-    private static string GetExtension(string filePath)
-    {
-        var rawExtension = Path.GetExtension(filePath);
-        var prefix = ScribanFileExtensions.FirstOrDefault(x => rawExtension.StartsWith(x, StringComparison.OrdinalIgnoreCase));
+    private string RenderTemplate(ScribanTemplate template, TemplateContext context) =>
+        Template.Parse(template.Content).Render(context);
 
-        if (string.IsNullOrEmpty(prefix))
-        {
-            throw new ArgumentException($"{filePath} file is not scriban template", nameof(filePath));
-        }
-
-        var result = rawExtension.Replace(prefix, string.Empty, StringComparison.OrdinalIgnoreCase);
-
-        if (string.IsNullOrEmpty(result))
-        {
-            throw new ArgumentException($"{filePath} file is not a template with the extension", nameof(filePath));
-        }
-
-        return result;
-    }
-
-    private string GetFilePath(ref string fileData)
+    private string GetDirectory(ref string fileData)
     {
         var regex = new Regex(PathPattern);
         var parsedPath = regex.Matches(fileData).FirstOrDefault()?.Groups[1]?.Value ?? string.Empty;
