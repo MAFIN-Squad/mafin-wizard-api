@@ -6,7 +6,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "{{ appName }}", "{{ appName }}.csproj", "{E36DF16C-DF15-4578-8B9F-EA58A50DD390}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "{{ appName }}", "{{ appName }}.csproj", "{{ '{' + projGuid + '}' }}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,10 +14,10 @@ Global
 		QA|Any CPU = QA|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E36DF16C-DF15-4578-8B9F-EA58A50DD390}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
-		{E36DF16C-DF15-4578-8B9F-EA58A50DD390}.Dev|Any CPU.Build.0 = Dev|Any CPU
-		{E36DF16C-DF15-4578-8B9F-EA58A50DD390}.QA|Any CPU.ActiveCfg = QA|Any CPU
-		{E36DF16C-DF15-4578-8B9F-EA58A50DD390}.QA|Any CPU.Build.0 = QA|Any CPU
+		{{ '{' + projGuid + '}' }}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{{ '{' + projGuid + '}' }}.Dev|Any CPU.Build.0 = Dev|Any CPU
+		{{ '{' + projGuid + '}' }}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{{ '{' + projGuid + '}' }}.QA|Any CPU.Build.0 = QA|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -25,6 +25,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D8B7548B-B4CE-4A83-BD27-CDB642677955}
+		SolutionGuid = {{ '{' + slnGuid + '}' }}
 	EndGlobalSection
 EndGlobal

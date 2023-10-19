@@ -28,7 +28,13 @@ public class Generator
     private TemplateContext CreateTemplateContext()
     {
         var templateContext = new TemplateContext();
-        var scriptObject = new ScriptObject { { "appName", _settings.AppName } };
+        var scriptObject = new ScriptObject
+        {
+            { "appName", _settings.AppName },
+            { "projGuid", Guid.NewGuid().ToString() },
+            { "slnGuid", Guid.NewGuid().ToString() },
+        };
+
         _settings.Parameters?.ForEach(x => scriptObject.Add(x.Key, x.Value));
         templateContext.PushGlobal(scriptObject);
 

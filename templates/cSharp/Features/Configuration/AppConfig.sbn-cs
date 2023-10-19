@@ -22,9 +22,6 @@ public static class AppConfig
             .AddEnvironmentDependentConfiguration(EnvironmentConfigurationSplitPrinciple.ByFileName, ".")
             .Build());
 
-    private static AppSettings _appSettings;
-    private static EnvSettings _envSettings;
-
     public static AppSettings AppSettings => _config.Value.GetSection<AppSettings>();
 
     public static EnvSettings EnvSettings => _config.Value.GetSection<EnvSettings>();

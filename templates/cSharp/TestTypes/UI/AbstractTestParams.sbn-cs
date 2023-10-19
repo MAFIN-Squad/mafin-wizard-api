@@ -2,7 +2,7 @@
   include 'commonFunctions'
 
   AbstractTestParams = {
-    name: 'AbstratctTest',
+    name: 'AbstractTest',
     path: ['Tests', 'UI'],
     usings: [ 
       'Mafin.Web.UI.Selenium.Configuration', 
