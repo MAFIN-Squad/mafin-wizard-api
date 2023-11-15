@@ -1,0 +1,7 @@
+{{-
+  addConfigSection '
+    "configuration": {
+      "directory": ".",
+      "fileExtensions": [ "json" ]
+    }'
+-}}

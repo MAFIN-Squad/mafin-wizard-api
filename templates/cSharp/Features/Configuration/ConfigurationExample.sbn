@@ -1,0 +1,26 @@
+{{- 
+  include 'commonFunctions'
+
+  TestsParams = {
+    name: 'ConfigurationExample.cs',
+    path: [ 'Tests', 'Configuration' ],
+    usings: [ 
+      'System',
+      appName + '.Configuration'
+      ],
+    sharedVariables: [],
+    parent: '',
+    tests: [
+      {
+        name: 'EnvSettings',
+        body: 'Console.WriteLine(AppConfig.EnvSettings.Example);'
+      },
+      {
+        name: 'AppSettings',
+        body: 'Console.WriteLine(AppConfig.AppSettings.Example);'
+      }
+    ]
+  }
+  
+  include 'TestsTemplate'
+-}}
