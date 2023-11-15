@@ -1,5 +1,4 @@
 {{- 
-    include 'commonFunctions'
     addPackages [ 
         { name: 'Mafin.Web.UI.Selenium', version: '0.1.6' }
     ] 

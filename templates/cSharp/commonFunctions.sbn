@@ -1,6 +1,6 @@
 {{-
   func formatUsings
-    for item in $0 
+    for item in $0 | array.sort
       'using ' + item + ';\n' 
     end
   end

@@ -4,11 +4,12 @@
     import TestsParams
     name | setFileName
     path | setFilePath
+
+    usings = usings | array.add 'NUnit.Framework'
     usings | formatUsings 
 ~}}
-{{~ if name ~}}
-using NUnit.Framework;
 
+{{~ if name ~}}
 namespace {{ path | formatNamespace }};
 
 public class {{ name | getFileNameWithoutExtension }} {{ parent | addParentClass }}
