@@ -1,6 +1,6 @@
 namespace Mafin.Wizard.Api.Extensions;
 
-public static class StringExtensions
+internal static class StringExtensions
 {
     public static string TrimEnd(this string input, string stringToRemove)
     {
