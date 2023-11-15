@@ -38,7 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\test.yml = .github\workflows\test.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mafin.Wizard.CLI", "src\Mafin.Wizard.CLI\Mafin.Wizard.CLI.csproj", "{D3F8FE7B-E041-481E-9DB6-1AE357F01997}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mafin.Wizard.CLI", "src\Mafin.Wizard.Cli\Mafin.Wizard.Cli.csproj", "{D3F8FE7B-E041-481E-9DB6-1AE357F01997}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
