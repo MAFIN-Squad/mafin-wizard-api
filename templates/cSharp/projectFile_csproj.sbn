@@ -10,7 +10,7 @@
   include 'TestTypes.UI.packages'
 
   configFiles = configFiles | array.add 'Mafin.Configuration.json'
-  appName | formatName
+  appName + '.csproj' | setFileName
 -}}
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>

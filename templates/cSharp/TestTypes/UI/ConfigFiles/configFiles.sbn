@@ -1,5 +1,5 @@
 {{- 
-    configFiles = configFiles | array.add_range [
+    addConfigFiles [
       'Mafin.Configuration.Chrome.json',
       'Mafin.Configuration.Edge.json',
       'Mafin.Configuration.Firefox.json',

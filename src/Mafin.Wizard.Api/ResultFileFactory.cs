@@ -1,4 +1,6 @@
 using System.Text.RegularExpressions;
+using Mafin.Wizard.Api.Constants;
+using Mafin.Wizard.Api.Extensions;
 using Mafin.Wizard.Api.Models;
 using Scriban;
 
@@ -14,9 +16,17 @@ internal class ResultFileFactory
         var renderedTemplate = RenderTemplate(template, context);
         var filename = GetFileName(template.Name, ref renderedTemplate);
         var directory = GetDirectory(ref renderedTemplate);
-        var extension = template.GetFileExtension();
 
-        return new FileInfoRecord(filename, extension, directory, renderedTemplate);
+        foreach (var extension in ScribanFileExtensions.ScriptExtensions)
+        {
+            if (filename.EndsWith($".{extension}"))
+            {
+                filename = filename.TrimEnd($".{extension}");
+                break;
+            }
+        }
+
+        return new FileInfoRecord(filename, directory, renderedTemplate);
     }
 
     private string RenderTemplate(ScribanTemplate template, TemplateContext context) =>
@@ -49,9 +59,10 @@ internal class ResultFileFactory
         else
         {
             name = Path.GetFileNameWithoutExtension(templateName);
+            var nameParts = name.Split(".");
+            name = nameParts[nameParts.Length - 1].Replace("_", ".", StringComparison.Ordinal);
         }
 
-        var nameParts = name.Split(".");
-        return nameParts[nameParts.Length - 1].Replace("_", ".", StringComparison.Ordinal);
+        return name;
     }
 }

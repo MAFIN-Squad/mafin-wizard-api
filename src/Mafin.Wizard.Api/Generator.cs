@@ -48,8 +48,9 @@ public class Generator
     {
         var factory = new ResultFileFactory();
         return _templateReader.ReadAll()
-            .Where(template => template.IsFileTemplate())
+            //.Where(template => template.IsFileTemplate())
             .Select(template => factory.CreateResultFileRecord(template, _templateContext))
+            .Where(x => !string.IsNullOrWhiteSpace(x.Data))
             .ToList();
     }
 }

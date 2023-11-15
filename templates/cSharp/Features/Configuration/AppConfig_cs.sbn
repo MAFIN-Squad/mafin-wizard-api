@@ -2,7 +2,7 @@
     include 'commonFunctions'
     include 'cSharp.commonFunctions'
     path = ['Configuration']
-    path | formatPath 
+    path | setFilePath 
 ~}}
 using System;
 using {{ path | formatNamespace }}.Models;

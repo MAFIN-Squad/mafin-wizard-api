@@ -2,7 +2,7 @@
     include 'commonFunctions'
     include 'cSharp.commonFunctions'
     path = ['Configuration', 'Models']
-    path | formatPath
+    path | setFilePath
 ~}}
 using Mafin.Configuration.Attributes;
 

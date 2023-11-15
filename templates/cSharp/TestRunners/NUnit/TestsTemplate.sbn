@@ -1,0 +1,45 @@
+{{~
+    include 'commonFunctions'
+    include 'csharp.commonFunctions'
+    import TestsParams
+    name | setFileName
+    path | setFilePath
+    usings | formatUsings 
+~}}
+{{~ if name ~}}
+using NUnit.Framework;
+
+namespace {{ path | formatNamespace }};
+
+public class {{ name | getFileNameWithoutExtension }} {{ parent | addParentClass }}
+{ 
+    {{~ for item in sharedVariables ~}}
+    {{ item }}
+    {{~ end -}}
+
+    {{~ if setup ~}}
+    [SetUp]
+    public void Setup()
+    {
+        {{ setup }}
+    }
+    {{~ end -}}
+
+    {{~ if teardown ~}}
+    [TearDown]
+    public void TearDown()
+    {
+        {{ teardown }}
+    }
+    {{~ end -}}
+
+    {{~ for test in tests ~}}
+    [Test]
+    public void {{test.name}}()
+    {
+        {{ test.body }}
+    }
+    
+    {{~ end -}}
+}
+{{~ end ~}}

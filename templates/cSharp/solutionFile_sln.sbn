@@ -1,6 +1,6 @@
 ﻿{{- 
 	include 'commonFunctions'
-	appName | formatName 
+	appName + '.sln' | setFileName 
 -}}
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17

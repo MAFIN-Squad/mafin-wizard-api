@@ -1,9 +1,17 @@
 {{-
-  func formatPath
-    '#### path: ' + ($0 | array.join ':') + ' ####'
+  func setFilePath
+    if $0
+      '#### path: ' + ($0 | array.join ':') + ' ####'
+    else
+      ''
+    end
   end
 
-  func formatName
-    '#### name: ' + $0 + ' ####'
+  func setFileName
+    if $0
+      '#### name: ' + $0 + ' ####'
+    else
+      ''
+    end
   end
 -}}

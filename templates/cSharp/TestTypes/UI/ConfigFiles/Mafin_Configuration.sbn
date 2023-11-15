@@ -1,5 +1,5 @@
 {{-
-  configSections = configSections | array.add '
+  addConfigSection '
     "selenium": {
       "browser": "chrome",
       "runType": "Local",
