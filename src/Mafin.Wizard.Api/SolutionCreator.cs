@@ -1,5 +1,4 @@
 using Mafin.Wizard.Api.Models;
-using SharpCompress;
 
 namespace Mafin.Wizard.Cli;
 
@@ -27,7 +26,13 @@ public class SolutionCreator
         }
     }
 
-    private void CreateFiles() => _model.Files.ForEach(CreateFile);
+    private void CreateFiles()
+    {
+        foreach (var file in _model.Files)
+        {
+            CreateFile(file);
+        }
+    }
 
     private void CreateFile(FileInfoRecord file)
     {

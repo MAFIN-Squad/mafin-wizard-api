@@ -1,7 +1,6 @@
 using Mafin.Wizard.Api.Models;
 using Scriban;
 using Scriban.Runtime;
-using SharpCompress;
 
 namespace Mafin.Wizard.Api;
 
@@ -35,7 +34,11 @@ public class Generator
             { "slnGuid", Guid.NewGuid().ToString() },
         };
 
-        _settings.Parameters?.ForEach(x => scriptObject.Add(x.Key, x.Value));
+        foreach(var param in _settings.Parameters)
+        {
+            scriptObject.Add(param.Key, param.Value);
+        }
+
         templateContext.PushGlobal(scriptObject);
 
         var loader = new ResourceTemplateLoader(_templateReader, _templateProvider);

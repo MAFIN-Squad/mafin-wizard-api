@@ -15,12 +15,12 @@ internal static class EntryPoint
 
     private static void HandleCreateCommand(WizardParameters parameters)
     {
-        var features = new List<string> { $"TestRunners.{parameters.TestRunner}" };
-        features.AddRange(parameters.TestTypes.Select(x => $"TestTypes.{x}"));
+        var features = new List<string> { $"CSharp.TestRunners.{parameters.TestRunner}" };
+        features.AddRange(parameters.TestTypes.Select(x => $"CSharp.TestTypes.{x}"));
 
         if (parameters.WithConfigModule)
         {
-            features.Add("Features.Configuration");
+            features.Add("CSharp.Features.Configuration");
         }
 
         var wizardSettings = new WizardSettings(parameters.Name, parameters.Language, features.ToArray());
