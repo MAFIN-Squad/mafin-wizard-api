@@ -54,7 +54,7 @@ internal class ResourceTemplateProvider
                 Path.GetFileNameWithoutExtension(x).Equals($"{BaseTemplatePath}.{name}", StringComparison.OrdinalIgnoreCase));
             return fileInRoot is not null
                 ? fileInRoot
-                : throw new FileNotFoundException($"Failed to find a unique template with {name} name");
+                : throw new FileLoadException($"Failed to find a unique template with {name} name");
         }
 
         return names.Single();

@@ -16,11 +16,8 @@ internal class ResultFileFactory
         var renderedTemplate = RenderTemplate(template, context);
         var filename = GetFileName(template.Name, ref renderedTemplate);
         var directory = GetDirectory(ref renderedTemplate);
-        foreach (var extension in ScribanFileExtensions.ScriptExtensions.Where(extension => filename.EndsWith($".{extension}", StringComparison.OrdinalIgnoreCase)))
-        {
-            filename = filename.TrimEnd($".{extension}");
-            break;
-        }
+        var extension = ScribanFileExtensions.ScriptExtensions.FirstOrDefault(x => filename.EndsWith($".{x}", StringComparison.OrdinalIgnoreCase));
+        filename = extension is not null ? filename.TrimEnd($".{extension}") : filename;
 
         return new FileInfoRecord(filename, directory, renderedTemplate);
     }
