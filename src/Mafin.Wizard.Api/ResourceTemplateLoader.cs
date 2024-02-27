@@ -22,7 +22,7 @@ internal class ResourceTemplateLoader : ITemplateLoader
 
     public async ValueTask<string> LoadAsync(TemplateContext context, SourceSpan callerSpan, string templatePath)
     {
-        return await _templateReader.ReadAsync(templatePath);
+        return await _templateReader.ReadAsync(templatePath).ConfigureAwait(false);
     }
 
     public string GetPath(TemplateContext context, SourceSpan callerSpan, string templateName)

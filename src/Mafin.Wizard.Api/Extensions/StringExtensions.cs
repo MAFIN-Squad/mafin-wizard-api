@@ -9,7 +9,7 @@ internal static class StringExtensions
             return input;
         }
 
-        while (input != string.Empty && input.EndsWith(stringToRemove))
+        while (!string.IsNullOrEmpty(input) && input.EndsWith(stringToRemove, StringComparison.Ordinal))
         {
             input = input[..^stringToRemove.Length];
         }

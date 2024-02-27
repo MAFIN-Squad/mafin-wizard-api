@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace Mafin.Wizard.Api;
@@ -17,7 +16,7 @@ internal class ResourceTemplateProvider
 
         if (_directories is null || _directories.Length is 0)
         {
-            _directories = new[] { string.Empty };
+            _directories = [string.Empty];
         }
     }
 

@@ -44,7 +44,7 @@ internal class TemplateReader
         try
         {
             var name = _templateProvider.GetFullTemplateName(templateName);
-            return await ReadManifestResourceAsync(name);
+            return await ReadManifestResourceAsync(name).ConfigureAwait(false);
         }
         catch (FileNotFoundException)
         {
@@ -63,6 +63,6 @@ internal class TemplateReader
     {
         using Stream stream = _assembly.GetManifestResourceStream(resourceName)!;
         using StreamReader reader = new StreamReader(stream);
-        return await reader.ReadToEndAsync();
+        return await reader.ReadToEndAsync().ConfigureAwait(false);
     }
 }

@@ -16,25 +16,21 @@ internal class ResultFileFactory
         var renderedTemplate = RenderTemplate(template, context);
         var filename = GetFileName(template.Name, ref renderedTemplate);
         var directory = GetDirectory(ref renderedTemplate);
-
-        foreach (var extension in ScribanFileExtensions.ScriptExtensions)
+        foreach (var extension in ScribanFileExtensions.ScriptExtensions.Where(extension => filename.EndsWith($".{extension}", StringComparison.OrdinalIgnoreCase)))
         {
-            if (filename.EndsWith($".{extension}"))
-            {
-                filename = filename.TrimEnd($".{extension}");
-                break;
-            }
+            filename = filename.TrimEnd($".{extension}");
+            break;
         }
 
         return new FileInfoRecord(filename, directory, renderedTemplate);
     }
 
-    private string RenderTemplate(ScribanTemplate template, TemplateContext context) =>
+    private static string RenderTemplate(ScribanTemplate template, TemplateContext context) =>
         Template.Parse(template.Content).Render(context);
 
-    private string GetDirectory(ref string fileData)
+    private static string GetDirectory(ref string fileData)
     {
-        var regex = new Regex(PathPattern);
+        Regex regex = new(PathPattern);
         var parsedPath = regex.Matches(fileData).FirstOrDefault()?.Groups[1]?.Value ?? string.Empty;
         var result = string.Empty;
 
@@ -47,9 +43,10 @@ internal class ResultFileFactory
         return result;
     }
 
-    private string GetFileName(string templateName, ref string fileData)
+    private static string GetFileName(string templateName, ref string fileData)
     {
-        var regex = new Regex(FileNamePattern);
+        const char dot = '.';
+        Regex regex = new(FileNamePattern);
         var name = regex.Matches(fileData).FirstOrDefault()?.Groups[1]?.Value ?? string.Empty;
 
         if (!string.IsNullOrEmpty(name))
@@ -59,8 +56,8 @@ internal class ResultFileFactory
         else
         {
             name = Path.GetFileNameWithoutExtension(templateName);
-            var nameParts = name.Split(".");
-            name = nameParts[nameParts.Length - 1].Replace("_", ".", StringComparison.Ordinal);
+            var nameParts = name.Split(dot);
+            name = nameParts[^1].Replace('_', dot);
         }
 
         return name;

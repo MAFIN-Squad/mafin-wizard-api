@@ -34,7 +34,7 @@ public class Generator
             { "slnGuid", Guid.NewGuid().ToString() },
         };
 
-        foreach(var param in _settings.Parameters)
+        foreach (var param in _settings.Parameters)
         {
             scriptObject.Add(param.Key, param.Value);
         }
