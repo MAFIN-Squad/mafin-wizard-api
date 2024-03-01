@@ -43,21 +43,15 @@ internal class ResourceTemplateProvider
         var names = GetResourceNames()
             .Where(x => Path.GetFileNameWithoutExtension(x).EndsWith(name, StringComparison.OrdinalIgnoreCase)).ToList();
 
-        if (names.Count is 0)
+        return names.Count switch
         {
-            throw new FileNotFoundException($"Template {name} is not found");
-        }
+            0 => throw new FileNotFoundException($"Template {name} is not found"),
 
-        if (names.Count is > 1)
-        {
-            var fileInRoot = names.Find(x =>
-                Path.GetFileNameWithoutExtension(x).Equals($"{BaseTemplatePath}.{name}", StringComparison.OrdinalIgnoreCase));
-            return fileInRoot is not null
-                ? fileInRoot
-                : throw new FileLoadException($"Failed to find a unique template with {name} name");
-        }
+            > 1 => names.Find(x => Path.GetFileNameWithoutExtension(x).Equals($"{BaseTemplatePath}.{name}", StringComparison.OrdinalIgnoreCase))
+                    ?? throw new FileLoadException($"Failed to find a unique template with {name} name"),
 
-        return names.Single();
+            _ => names.Single()
+        };
     }
 
     public IEnumerable<string> GetResourceNames() => _directories
