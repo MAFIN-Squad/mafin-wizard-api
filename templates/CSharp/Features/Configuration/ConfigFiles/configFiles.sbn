@@ -1,0 +1,7 @@
+{{- 
+    addConfigFiles [
+      'envsettings.dev.json',
+      'envsettings.qa.json',
+      'appsettings.json'
+    ] 
+-}}

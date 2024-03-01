@@ -1,0 +1,15 @@
+{
+    "selenium": {
+      "remote": {
+        "browserVersion": "",
+        "url": ""
+      },
+      "capabilities": {
+      },
+      "arguments": [
+      ],
+      "extensions": [],
+      "preferences": {
+      }
+    }
+  }

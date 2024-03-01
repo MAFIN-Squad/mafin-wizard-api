@@ -1,0 +1,31 @@
+{{-
+  include 'commonFunctions'
+  include 'cSharp.commonFunctions'
+  include 'Features.Configuration.ConfigFiles.configFiles'
+  include 'Features.Configuration.packages'
+  include 'TestRunners.NUnit.packages'
+  include 'TestTypes.API.ConfigFiles.configFiles'
+  include 'TestTypes.API.packages'
+  include 'TestTypes.UI.ConfigFiles.configFiles'
+  include 'TestTypes.UI.packages'
+
+  configFiles = configFiles | array.add 'Mafin.Configuration.json'
+  appName + '.csproj' | setFileName
+-}}
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0</TargetFrameworks>
+    <Configurations>Dev;QA</Configurations>
+  </PropertyGroup>
+  <ItemGroup>
+  {{~ for package in packages ~}}
+    <PackageReference Include="{{ package.name }}" Version="{{ package.version }}" />
+  {{~ end ~}}
+  </ItemGroup>
+
+  <ItemGroup>
+  {{~ for configFile in configFiles ~}}
+    <None Update="{{ configFile }}" CopyToOutputDirectory="PreserveNewest" />
+  {{~ end ~}}
+  </ItemGroup>
+</Project>

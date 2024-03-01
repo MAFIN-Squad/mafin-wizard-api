@@ -1,0 +1,35 @@
+{{-
+  func formatUsings
+    for item in $0 | array.sort
+      'using ' + item + ';\n' 
+    end
+  end
+
+  func formatNamespace
+    appName + '.' + ($0 | array.join '.')
+  end
+
+  func addParentClass
+    if ($0 && $0 != '')
+      ': ' + $0 
+    else
+      ''
+    end
+  end
+
+  func addPackages
+    packages = packages | array.add_range $0
+  end
+
+  func addConfigSection
+    configSections = configSections | array.add $0
+  end
+
+  func addConfigFiles
+    configFiles = configFiles | array.add_range $0
+  end
+
+  func getFileNameWithoutExtension
+    $0 | string.split '.' | array.first 
+  end
+-}}

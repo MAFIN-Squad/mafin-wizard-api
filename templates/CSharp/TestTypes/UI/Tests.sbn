@@ -1,0 +1,19 @@
+{{- 
+  include 'commonFunctions'
+
+  TestsParams = {
+    name: 'Tests.cs',
+    path: [ 'Tests', 'UI' ],
+    usings: [ 'OpenQA.Selenium' ],
+    parent: '',
+    tests: [
+      {
+        name: 'Test',
+        body: '// something might be here'
+      }
+    ],
+    sharedVariables: [],
+  }
+  
+  include 'TestsTemplate'
+-}}

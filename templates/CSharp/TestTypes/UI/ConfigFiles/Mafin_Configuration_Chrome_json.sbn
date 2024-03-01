@@ -1,0 +1,19 @@
+{
+    "selenium": {
+      "remote": {
+        "browserVersion": "",
+        "url": ""
+      },
+      "capabilities": {
+      },
+      "arguments": [
+        "--start-maximized",
+        "--lang=en"
+      ],
+      "extensions": [],
+      "preferences": {
+        "credentials_enable_service": "false",
+        "profile.password_manager_enabled": "false"
+      }
+    }
+  }

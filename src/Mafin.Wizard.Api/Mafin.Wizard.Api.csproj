@@ -8,12 +8,15 @@
     <RepositoryUrl>https://github.com/MAFIN-Squad/module-template</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version></Version>
+    <Version>0.1.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="$(MSBuildProjectName).Tests.Unit" />
 
+    <PackageReference Include="Scriban" />
+
     <None Include="..\..\LICENSE" Pack="True" PackagePath="\" Visible="False" />
     <None Include="..\..\README.md" Pack="True" PackagePath="\" Visible="False" />
+    <EmbeddedResource Include="..\..\templates\**\*.*" />
   </ItemGroup>
 </Project>

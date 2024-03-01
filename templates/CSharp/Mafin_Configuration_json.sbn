@@ -1,0 +1,8 @@
+{
+  {{~
+    include 'TestTypes.UI.ConfigFiles.Mafin_Configuration'
+    include 'TestTypes.API.ConfigFiles.Mafin_Configuration'
+    include 'Features.Configuration.ConfigFiles.Mafin_Configuration'
+    configSections | array.join ','
+  ~}}
+} 

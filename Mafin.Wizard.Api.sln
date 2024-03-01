@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\test.yml = .github\workflows\test.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mafin.Wizard.CLI", "src\Mafin.Wizard.Cli\Mafin.Wizard.Cli.csproj", "{D3F8FE7B-E041-481E-9DB6-1AE357F01997}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{4B031DA2-E0E4-4F6C-BDBB-1FD5DB2476FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B031DA2-E0E4-4F6C-BDBB-1FD5DB2476FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B031DA2-E0E4-4F6C-BDBB-1FD5DB2476FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3F8FE7B-E041-481E-9DB6-1AE357F01997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3F8FE7B-E041-481E-9DB6-1AE357F01997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3F8FE7B-E041-481E-9DB6-1AE357F01997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3F8FE7B-E041-481E-9DB6-1AE357F01997}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{32BF8D0B-AF67-4676-9387-84E4FA4AC738} = {DABEE7D9-74D7-4FAF-B688-8F7ABBDE8D60}
 		{CB8A64B0-00EA-4E45-A813-F01C85D9318E} = {DABEE7D9-74D7-4FAF-B688-8F7ABBDE8D60}
 		{662421CA-0F8C-464E-93A3-BCF54421A236} = {CB8A64B0-00EA-4E45-A813-F01C85D9318E}
+		{D3F8FE7B-E041-481E-9DB6-1AE357F01997} = {E080EBEC-509D-4DE0-99F4-6262D0EBFB89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D8B7548B-B4CE-4A83-BD27-CDB642677955}
